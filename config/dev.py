@@ -1,6 +1,6 @@
 import os
-basedir = os.path.abspath(os.path.dirname(__file__))
-
+# basedir = os.path.abspath(os.path.dirname(__file__))
+basedir=os.getcwd()
 DEBUG=True
 SECRET_KEY='hii'
 SQLALCHEMY_TRACK_MODIFICATIONS = False
