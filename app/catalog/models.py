@@ -1,9 +1,23 @@
 from app import db
 from datetime import datetime
+class Funny(db.Model):
+    __tablename__= 'funny'
+    id = db.Column(db.Integer, primary_key=True)
+    phno= db.Column(db.String(13), nullable=False)
+    name = db.Column(db.String(80), nullable=False)
+
+    def __init__(self, name,phno):
+        self.name = name
+        self.phno = phno
+
+    def __repr__(self):
+        return 'Funny is {}'.format(self.name)
+
 class Publication(db.Model):
     __tablename__ = 'publication'
 
     id = db.Column(db.Integer, primary_key=True)
+    phno= db.Column(db.String(13), nullable=False)
     name = db.Column(db.String(80), nullable=False)
 
     def __init__(self, name):

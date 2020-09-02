@@ -29,4 +29,13 @@ if __name__ == "__main__":
 # >>> db.session.commit()
 
 
+#Flask Migrate tutorial https://www.youtube.com/watch?v=IxCBjUapkWk
+#its quite simple now just put
+# $ flask db
+# $ flask db init -> creates a repository which contains script
+# $ flask db migrate -> creates script by watching models
+# $ flask db updgrade -> does the magic
+
+
+
 
