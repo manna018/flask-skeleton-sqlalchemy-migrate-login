@@ -61,4 +61,8 @@ class Book(db.Model):
 #we pass id and fun loads it into session 
 @login_manager.user_loader
 def load_user(id):
-    return Funny.query.get(int(id))
+    try:
+        return Funny.query.get(int(id))
+    except Exception as e:
+        print("No User")
+        return None

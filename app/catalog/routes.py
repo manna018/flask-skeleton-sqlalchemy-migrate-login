@@ -8,14 +8,17 @@ from flask_login import login_user,logout_user
 
 @main.route('/')
 def display_books():
+    
     books=Book.query.all()
+    print("index")
     return render_template('home.html',books=books)
 
 @main.route('/login')
 def do_login():
-    fun=Funny(name='mohit',phno='1234')
+    print("here")
+    fun=Funny.query.filter_by(name='mohit').first()
     try:
-        login_user(fun,True)
+        login_user(fun,remember=True)
     except Exception as e:
         return "Failed"
     return "Gud"

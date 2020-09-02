@@ -9,7 +9,11 @@ from flask_bcrypt import Bcrypt
 db=SQLAlchemy()
 migrate=Migrate()
 login_manager=LoginManager()
-login_manager.login_view='catalog.do_login'
+# login_manager.login_view='catalog.do_login'
+login_manager.blueprint_login_views={
+    'login':'/login',
+    'currentUser':'/currentUser',
+}
 bcrypt=Bcrypt()
 
 def create_app(config_type):
@@ -25,4 +29,6 @@ def create_app(config_type):
 
     from app.catalog import main
     app.register_blueprint(main)
+    from app.auth import auth_bp
+    app.register_blueprint(auth_bp)
     return app
