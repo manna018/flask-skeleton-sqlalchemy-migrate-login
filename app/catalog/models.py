@@ -1,8 +1,12 @@
 from app import db
 from datetime import datetime
-class Funny(db.Model):
+from app import login_manager
+from flask_login import UserMixin
+
+class Funny(db.Model,UserMixin):
     __tablename__= 'funny'
     id = db.Column(db.Integer, primary_key=True)
+    active = db.Column('is_active', db.Boolean(), nullable=False, server_default='1')
     phno= db.Column(db.String(13), nullable=False)
     name = db.Column(db.String(80), nullable=False)
 
@@ -17,7 +21,7 @@ class Publication(db.Model):
     __tablename__ = 'publication'
 
     id = db.Column(db.Integer, primary_key=True)
-    phno= db.Column(db.String(13), nullable=False)
+    phno= db.Column(db.String(13), nullable=True)
     name = db.Column(db.String(80), nullable=False)
 
     def __init__(self, name):
@@ -53,3 +57,8 @@ class Book(db.Model):
 
     def __repr__(self):
         return '{} by {}'.format(self.title, self.author)
+
+#we pass id and fun loads it into session 
+@login_manager.user_loader
+def load_user(id):
+    return Funny.query.get(int(id))

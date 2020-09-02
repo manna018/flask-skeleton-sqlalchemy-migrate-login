@@ -35,6 +35,7 @@ if __name__ == "__main__":
 # $ flask db init -> creates a repository which contains script
 # $ flask db migrate -> creates script by watching models
 # $ flask db updgrade -> does the magic
+# $ flask db stamp head -> to tell migration that it is update
 
 
 
